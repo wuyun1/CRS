@@ -1,0 +1,54 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+
+
+#answer_container{
+	border: 1px solid gray;
+	padding: 2px;
+	max-height: 150px;
+	
+	overflow-y: scroll;
+}
+
+.del_an_hide{
+	display: none;
+	padding: 0;
+}
+
+#answer_container div:hover .del_an_hide{
+	display:table-cell;
+}
+
+
+#tm_list>li:hover .del_an_hide{
+	position: absolute;
+	display:block;
+	width:auto;
+	padding: 5px;
+	right: 5px;
+	top:0px;
+}
+
+#tm_list{
+	border: 1px solid gray;
+	/*padding: 2px;*/
+	max-height: 500px;
+	list-style-type: decimal;
+	overflow-y: scroll;
+}
+
+#tm_list>li{
+	position: relative;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background: orange;
+	border-radius: 5px;
+
+}

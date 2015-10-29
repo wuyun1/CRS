@@ -1,0 +1,30 @@
+{
+  "name": "CRS",
+  "description": "Classroom response system",
+  "main": "./servers/app.js",
+  "authors": [
+    "wuyun1 <842269153@qq.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "CRS",
+    "Classroom",
+    "response",
+    "system"
+  ],
+  "homepage": "https://github.com/wuyun1/Hi-chat",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
+  }
+}

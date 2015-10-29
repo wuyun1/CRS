@@ -1,0 +1,37 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    
+}
+
+
+
+#login_bincode {
+     border: 1px solid gray;
+    width: 100%;
+    max-height: 300px;
+}
+
+#logined_users_box {
+    border: 1px solid gray;
+    height: 300px;
+    overflow-y: scroll;
+    overflow-y: solid;
+    list-style-type: none;
+}
+
+#title_h1 {
+    margin-bottom: 40px;
+    text-align: center;
+}
+/*.page {
+    min-height: 600px;
+}
+
+#page_beginanswer {
+    background: #222 url(../images/micro_carbon.png) repeat top left;
+    background-attachment: fixed;
+    color: #f6e7ce;
+}
+*/
