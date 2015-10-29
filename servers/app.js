@@ -23,14 +23,57 @@ server.listen(port);
 
 var teacher=null;
 var users=[];
+var students=[];
 
 var io = require('socket.io').listen(server);
 io.on('connection', function(socket) {
     //�ǳ�����
 
+
+
+
+
+
+
+
+
+
+
     socket.on('teacher_login',function (argument) {
 
       console.log("教师端以登录！");
+      teacher=socket;
+
+      socket.on('disconnect', function(e) {
+            teacher=null;
+            console.log("教师端已经下线！",e);
+            socket.broadcast.emit("logout");
+            students=[];
+        });
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    socket.on('manger_login',function (argument) {
+
+      console.log("管理端以登录！");
       socket.on('save_problem',function  (pro,key) {
 
 
@@ -83,6 +126,42 @@ io.on('connection', function(socket) {
 
 
     });
+
+ socket.on('xs_login', function() {
+
+      console.log("学生端连接");
+
+      socket.on("xslogin",function (nickname,num) {
+        console.log(nickname,num,"学生端登录");
+        
+
+        if(teacher) {
+            students.push(socket);
+            var index=students.indexOf(socket);
+            socket.emit("loginSuccess",index,nickname,num);
+            teacher.emit("xs_dl",index,nickname,num);
+            
+            socket.xs_name=nickname;
+            socket.xs_num=num;
+        }else{
+            socket.emit("loginFaild","教师端已经下线！");
+        }
+        
+
+      socket.on('disconnect', function(e) {
+            if(students!=0){
+               var index=students.indexOf(socket);
+               students=students.slice(0,index).concat(students.slice(index+1,students.length));
+            }
+            teacher&&teacher.emit("xs_xx",index,socket.xs_name,socket.xs_num); 
+            console.log("学生下线！",socket.xs_index,socket.xs_name,socket.xs_num);
+        });
+
+
+      });
+
+      socket.emit("require_login");
+});
 
 
 

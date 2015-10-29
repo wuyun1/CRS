@@ -7,7 +7,7 @@ $(function () {
 	var tpl_an='                            <div class="input-group"> <span class="input-group-addon"> <input type="radio" aria-label="..." name="is_right" > </span> <input type="text" class="form-control" aria-label="..." placeholder="请输入答案选项"> <span class="input-group-addon del_an_hide"> <a href="#close" id="btn_del_an" class="remove label label-danger"><i class="glyphicon-remove glyphicon"></i>删除</a> </span> </div>';
 	var tpl_remove_btn='<a id="btn_del_an" class="remove label label-danger del_an_hide"><i class="glyphicon-remove glyphicon"></i>删除</a>';
 
-
+	$('#loading_Modal').modal('show');
 
 	$('#fullpage').fullpage({
 		anchors: ['problem_list', 'edit_problem'],
@@ -170,10 +170,15 @@ $(function () {
 
 	socket.on('connect', function(e) {
             console.log("连接成功", e);
+            setTimeout(function  () {
 
-            	socket.emit('teacher_login');
+            		socket.emit('manger_login');
 
-		socket.emit('get_all_pro');
+			socket.emit('get_all_pro');
+			$('#loading_Modal').modal('hide');
+
+            },1000);
+            	
 
 
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fullpage.js/jquery.fullPage.css">
-    <link rel="stylesheet" href="./styles/smdl.css">
+    <link rel="stylesheet" href="./styles/teacher.css">
     <title>学生二维码登录</title>
 </head>
 
@@ -48,10 +48,9 @@
                             <h4 align="center">扫码二维码登录</h4>
                         </div>
                         <div class="col-md-5">
-                            <p><span><strong>当前已登录人数:###</strong></span></p>
+                            <p><span><strong>当前已登录人数: <span id="xs_len">0</span></strong></span></p>
                             <ul id="logined_users_box">
-                                <li>新闻资讯</li>
-                                <li>体育竞技</li>
+                                
                             </ul>
                             <div class="progress">
                                 <div class="bar"></div>
@@ -93,11 +92,31 @@
             <p>leanrm10</p>
         </div>
     </div>
+
+
+<div class="modal fade" id="loading_Modal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">正在连接服务器。。。</h4>
+      </div>
+      <div class="modal-body">
+        <img src="images/loading.gif" width="100%">
+      </div>
+     
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+    
     <script type="text/javascript " src="jquery/dist/jquery.min.js "></script>
     <script type="text/javascript " src="bootstrap/dist/js/bootstrap.min.js "></script>
     <script type="text/javascript " src="fullpage.js/jquery.fullPage.js "></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="jquery-qrcode/jquery.qrcode.min.js"></script>
-    <script type="text/javascript " src="./scripts/smdl.js "></script>
+    <script type="text/javascript " src="./scripts/teacher.js "></script>
 </body>
 
 </html>

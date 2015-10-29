@@ -21,6 +21,18 @@ body {
     list-style-type: none;
 }
 
+#logined_users_box>li{
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: orange;
+    border-radius: 5px;
+
+}
+
 #title_h1 {
     margin-bottom: 40px;
     text-align: center;
