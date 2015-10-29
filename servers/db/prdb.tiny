@@ -20,3 +20,31 @@ ID_1446096198557_key	"ID_1446096198557"
 ID_1446090208156_key	"\u0000"
 ID_1446093042291_key	"\u0000"
 ID_1446096198557_key	"\u0000"
+ID_1446085867152_key	"ID_1446085867152"
+ID_1446085867152content	"我叫什么名字啊？"
+ID_1446085867152answer	[{"xx":"吴云a ","is_right":false},{"xx":"吴云强","is_right":true},{"xx":"云强强","is_right":false}]
+ID_1446085867152group	["default"]
+ID_1446085840398_key	"ID_1446085840398"
+ID_1446085840398content	"你是不是"
+ID_1446085840398answer	[{"xx":"是","is_right":false},{"xx":"不是","is_right":true},{"xx":"不确定","is_right":false}]
+ID_1446085840398group	["default"]
+ID_1446103450882content	""
+ID_1446103450882answer	[{"xx":"","is_right":false},{"xx":"","is_right":true}]
+ID_1446103450882group	["default"]
+ID_1446103450882_key	"ID_1446103450882"
+ID_1446103450882_key	"\u0000"
+ID_1446103450882content	"\u0000"
+ID_1446103450882answer	"\u0000"
+ID_1446103450882group	"\u0000"
+ID_1446103474250content	"/。/，/。"
+ID_1446103474250answer	[{"xx":"","is_right":false},{"xx":"","is_right":true}]
+ID_1446103474250group	["default"]
+ID_1446103474250_key	"ID_1446103474250"
+ID_1446103474250_key	"\u0000"
+ID_1446103474250content	"\u0000"
+ID_1446103474250answer	"\u0000"
+ID_1446103474250group	"\u0000"
+ID_1446087431101_key	"ID_1446087431101"
+ID_1446087431101content	"node-tiny中  all函数为获取所有数据，参数为回调函数，该函数是否已经被弃用了。大法师的方"
+ID_1446087431101answer	[{"xx":"是吧","is_right":false},{"xx":"不是","is_right":true},{"xx":"不晓得","is_right":false}]
+ID_1446087431101group	["default"]
