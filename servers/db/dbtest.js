@@ -9,7 +9,7 @@ problemdb.compact();
 // problemdb.each( function (argument) {
 // 	console.log(argument);
 // });
-// problemdb.dump();
+problemdb.dump();
 // problemdb.remove("ID_1446081005055");
 // problemdb.compact();
 // problemdb.remove("cdcd");

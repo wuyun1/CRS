@@ -8,15 +8,12 @@ ID_1446085840398group	["default"]
 ID_1446085840398_key	"ID_1446085840398"
 ID_1446085867152content	"我叫什么名字啊？"
 ID_1446085867152answer	[{"xx":"吴云a ","is_right":false},{"xx":"吴云强","is_right":true},{"xx":"云强强","is_right":false}]
-ID_1446085867152group	["default"]
 ID_1446085867152_key	"ID_1446085867152"
+ID_1446085867152group	["default"]
 ID_1446087431101content	"node-tiny中  all函数为获取所有数据，参数为回调函数，该函数是否已经被弃用了。大法师的方式"
 ID_1446087431101answer	[{"xx":"是吧","is_right":false},{"xx":"不是","is_right":true},{"xx":"不晓得","is_right":false}]
 ID_1446087431101group	["default"]
 ID_1446087431101_key	"ID_1446087431101"
-ID_1446090208156content	"哈哈哈哈哈哈sb"
-ID_1446090208156answer	[{"xx":"你是猪","is_right":false},{"xx":"笔","is_right":false},{"xx":"是芭比","is_right":true}]
-ID_1446090208156group	["default"]
 ID_1446090208156_key	"ID_1446090208156"
 ID_1446093042291_key	"ID_1446093042291"
 ID_1446096198557_key	"ID_1446096198557"
