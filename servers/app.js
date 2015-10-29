@@ -64,8 +64,9 @@ io.on('connection', function(socket) {
       socket.on('get_all_pro',function  () {
         console.log("获取所有题目");
 
-        problemdb.filter(20,function  (obj,key) {
-          return true;
+        problemdb.filter(20,function(obj,key) {
+          if(obj._key) return true;
+          else return false;
         }, function (datas) {
           socket.emit('all_pro_data',datas);
         });
