@@ -19,7 +19,6 @@ var port = normalizePort(process.env.PORT || '80');
     
 app.use(express.static(path.join(__dirname, '../www'))); //指定静态HTML文件的位置
 app.use(express.static(path.join(__dirname, '../bower_components')));
-console.log(path.join(__dirname, '../bower_components'));
 server.listen(8080);
 
 var teacher=null;
