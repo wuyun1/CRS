@@ -162,7 +162,7 @@ $(function () {
 	});
 
 
-	var socket = io.connect('ws://127.0.0.1');
+	var socket = io.connect();
 
 	socket.on('connecting', function(e) {
            	console.log("正在连接。。。",e);

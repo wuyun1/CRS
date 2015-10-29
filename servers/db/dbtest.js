@@ -5,10 +5,10 @@ var problemdb = require('./problem');
 // problemdb.get("ID_1446081789181",function  (argument) {
 // 	console.log(argument);
 // });
-// problemdb.compact();
-problemdb.each( function (argument) {
-	console.log(argument);
-});
+problemdb.compact();
+// problemdb.each( function (argument) {
+// 	console.log(argument);
+// });
 // problemdb.dump();
 // problemdb.remove("ID_1446081005055");
 // problemdb.compact();
