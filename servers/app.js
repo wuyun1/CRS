@@ -1,5 +1,4 @@
-var debug = require('debug')('CRS:server'),
-	path = require('path'),
+var path = require('path'),
 	express = require('express'), //引入express模块
 	http = require('http'),
 	app = express(),
@@ -20,8 +19,8 @@ var port = normalizePort(process.env.PORT || '80');
     
 app.use(express.static(path.join(__dirname, '../www'))); //指定静态HTML文件的位置
 app.use(express.static(path.join(__dirname, '../bower_components')));
-
-server.listen(80);
+console.log(path.join(__dirname, '../bower_components'));
+server.listen(8080);
 
 var teacher=null;
 var users=[];
@@ -185,5 +184,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }
