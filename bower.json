@@ -29,7 +29,8 @@
     "bootstrap":"*",
     "bootstrapvalidator":"*",
     "fullpage.js":"*",
-    "jquery":"~2.1.4"
+    "jquery":"~2.1.4",
+    "requirejs":"*"
 
   },
   "version": "0.0.0",
