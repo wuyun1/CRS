@@ -1,18 +1,28 @@
 
 
 
+
 require.config({
+	shim: {
+		'bootstrap': ['jquery'],
+		'fullpage': ['jquery'],
+		'jquery_qrcode': ['jquery'],
+		'bootstrapValidator':['bootstrap'],
+  		'slimScroll':['jquery']
+    },
     paths: {
         jquery: '/jquery/dist/jquery.min',
         bootstrap:'/bootstrap/dist/js/bootstrap.min',
         fullpage:'/fullpage.js/jquery.fullPage',
         socketio:'/socket.io/socket.io',
-        jquery_qrcode:'/jquery-qrcode/jquery.qrcode.min'
-
+        slimScroll:"/slimScroll/jquery.slimscroll.min",
+        jquery_qrcode:'/jquery-qrcode/jquery.qrcode.min',
+        bootstrapValidator:'/bootstrapvalidator/dist/js/bootstrapValidator.min',
     }
 });
  
-require(['jquery','socketio','bootstrap','fullpage'], function($,io) {
+ 
+require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io) {
 
 
 
@@ -32,6 +42,7 @@ require(['jquery','socketio','bootstrap','fullpage'], function($,io) {
 			css3:true,
 			paddingTop:"50px",
 			sectionsColor: ['#fff', '#fff', '#7BAABE', '#f90'],
+			scrollOverflow:true,
 			afterLoad:function (anchorLink, index) {
 				$("#navbar-nav>.active").removeClass("active");
 				$("#navbar-nav>li>a[href=#"+anchorLink+"]").parent().addClass("active");

@@ -1,18 +1,26 @@
 
 
-
 require.config({
+	shim: {
+		'bootstrap': ['jquery'],
+		'fullpage': ['jquery'],
+		'jquery_qrcode': ['jquery'],
+		'bootstrapValidator':['bootstrap'],
+  		'slimScroll':['jquery']
+    },
     paths: {
         jquery: '/jquery/dist/jquery.min',
         bootstrap:'/bootstrap/dist/js/bootstrap.min',
         fullpage:'/fullpage.js/jquery.fullPage',
         socketio:'/socket.io/socket.io',
+        slimScroll:"/slimScroll/jquery.slimscroll.min",
         jquery_qrcode:'/jquery-qrcode/jquery.qrcode.min',
         bootstrapValidator:'/bootstrapvalidator/dist/js/bootstrapValidator.min',
     }
 });
- 
-require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator'], function($,io) {
+
+
+require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimScroll'], function($,io) {
 
 
 
