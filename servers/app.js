@@ -41,7 +41,16 @@ io.on('connection', function(socket) {
 
     socket.on('teacher_login',function (argument) {
 
+       if(teacher!=null)
+       {
+           console.log("教师端重复登录登录！");
+           socket.emit("loginFaild","已有教师端在线！");
+           return false;
+       }
+
+
       console.log("教师端以登录！");
+      socket.emit("loginSuccess");
       teacher=socket;
 
       socket.on('disconnect', function(e) {
@@ -154,7 +163,7 @@ io.on('connection', function(socket) {
                students=students.slice(0,index).concat(students.slice(index+1,students.length));
             }
             teacher&&teacher.emit("xs_xx",index,socket.xs_name,socket.xs_num); 
-            console.log("学生下线！",socket.xs_index,socket.xs_name,socket.xs_num);
+            console.log("学生下线！",index,socket.xs_name,socket.xs_num);
         });
 
 

@@ -25,7 +25,12 @@
   ],
   "dependencies": {
     "fullpage.js": "~2.7.4",
-    "jquery-qrcode": "*"
+    "jquery-qrcode": "*",
+    "bootstrap":"*",
+    "bootstrapvalidator":"*",
+    "fullpage.js":"*",
+    "jquery":"~2.1.4",
+
   },
   "version": "0.0.0",
   "private": true
