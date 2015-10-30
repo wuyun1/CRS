@@ -6,7 +6,6 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fullpage.js/jquery.fullPage.css">
     <link rel="stylesheet" href="./styles/teacher.css">
@@ -38,8 +37,9 @@
                         <div class="col-xs-12">
                             <div class="page-header">
                                 <div class="row-fluid">
-                                    <div class="col-xs-2"><img  alt="140x140" src="images/7.gif" class="img-polaroid"> </div>
-                                    <div class="col-xs-8"> <h1 id="title_h1"><img style="width:30px;" alt="140x140" src="images/7.gif" />CRS课堂应答系统</h1> </div>
+                                    <div class="col-xs-2"><img alt="140x140" src="images/7.gif" class="img-polaroid"> </div>
+                                    <div class="col-xs-8">
+                                        <h1 id="title_h1"><img style="width:30px;" alt="140x140" src="images/7.gif" />CRS课堂应答系统</h1> </div>
                                 </div>
                             </div>
                         </div>
@@ -47,13 +47,13 @@
                     <div class="row-fluid">
                         <div class="col-xs-4">
                             <div id="login_bincode"></div>
-
                             <h4 align="center">扫码二维码登录</h4>
                         </div>
                         <div class="col-xs-5">
-                            <p><span><strong>当前已登录人数: <span id="xs_len">0</span></strong></span></p>
+                            <p><span><strong>当前已登录人数: <span id="xs_len">0</span></strong>
+                                </span>
+                            </p>
                             <ul id="logined_users_box">
-                                
                             </ul>
                             <div class="progress">
                                 <div class="bar"></div>
@@ -73,8 +73,11 @@
                                         <li><a href="#">Something else here</a></li>
                                         <li><a href="#">Separated link</a></li>
                                     </ul>
-                                </div><br><br><br><br>
-                               
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
                                 <button id="btn_beginanswer" type="button " class="btn btn-primary btn-large btn-block">开始答题</button>
                             </form>
                         </div>
@@ -83,42 +86,45 @@
             </div>
         </div>
         <div data-anchor="page_beginanswer" class="container-fluid sec section">
-           <div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <p class="lead text-info">
-                 <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
-                <br><br><br><br><br>
-            </p>
-        </div>
-    </div>
+            <div id="ctl_panel" class="container">
 
     <div class="row clearfix">
-        <div class="col-md-12 column">
-             <button type="button" class="btn btn-default btn-block btn-warning">A.按钮</button> <button type="button" class="btn btn-default btn-block btn-success">B.按钮</button> <button type="button" class="btn btn-default btn-block btn-info">C.按钮</button> <button type="button" class="btn btn-default btn-block btn-danger">D.按钮</button>
+        <div class="col-xs-6 column">
+             <button type="button" class="btn btn-default btn-block btn-success">开始作答</button>
+        </div>
+        <div class="col-xs-6 column">
+             <button type="button" class="btn btn-default btn-block btn-warning">下一题</button>
         </div>
     </div>
-</div>
+    <div class="row clearfix">
+        <div class="col-xs-12 column">
+            <br>
+            <div class="progress active progress-striped">应答成功进度条
+                <div class="progress-bar progress-success " style="width: 60%;">
+                </div>
+            </div>
         </div>
     </div>
 
-
-<div class="modal fade" id="loading_Modal" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">正在连接服务器。。。</h4>
-      </div>
-      <div class="modal-body">
-        <img src="images/loading.gif" width="100%">
-      </div>
-     
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-    
+            </div>
+            <div id="tmlist_wraper"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="loading_Modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="tip_content">正在连接服务器。。。</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="images/loading.gif" width="100%">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </body>
 
 </html>

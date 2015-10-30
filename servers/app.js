@@ -60,6 +60,22 @@ io.on('connection', function(socket) {
             students=[];
         });
 
+
+      socket.on('get_tm_data', function(cate) {
+            if(cate=="default"){
+               problemdb.filter(20,function(obj,key) {if(obj._key) return true;  else return false;  }, function (datas) {   socket.emit('tm_data',datas);  });
+            }
+        });
+
+
+
+
+
+
+
+
+
+
     });
 
 

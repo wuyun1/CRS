@@ -23,41 +23,49 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 
 	$(function () {
 
-		var jQuery=$;
+		var ctm_data=null;
 		$('#loading_Modal').modal('show');
 
 		var students=[];
 		 // students=students.slice(0,index).concat(students.slice(index+1,students.length));
 
-		$('#fullpage').fullpage({
-			anchors: ['page_login', 'page_beginanswer'],
-			css3:true,
-			paddingTop:"50px",
-			scrollOverflow:true,
-			// sectionsColor: ['#fff', 'gray', '#7BAABE', '#f90'],
-			afterLoad:function (anchorLink, index) {
-				$("#navbar-nav>.active").removeClass("active");
-				$("#navbar-nav>li>a[href=#"+anchorLink+"]").parent().addClass("active");
-				switch(anchorLink){
-					case "page_login":
-						// $(document).attr('title','学生二维码登录');
-						$("#navbar").show(500);
-						
-						break;
-					case "page_beginanswer":
-						// $(document).attr('title','开始答题');
-						$("#navbar").hide(2000);
-						
-						break;
-					default:
+		function fullpagebuild () {
+			// body...
+		
+			$('#fullpage').fullpage({
+				anchors: ['page_login', 'page_beginanswer'],
+				css3:true,
+				paddingTop:"50px",
+				loopHorizontal:false,
+				// fixedElements:"#ctl_panel",
+				controlArrowColor:"rgba(0,0,0,0)",
+				scrollOverflow:true,
+				// sectionsColor: ['#fff', 'gray', '#7BAABE', '#f90'],
+				afterLoad:function (anchorLink, index) {
+					$("#navbar-nav>.active").removeClass("active");
+					$("#navbar-nav>li>a[href=#"+anchorLink+"]").parent().addClass("active");
+					switch(anchorLink){
+						case "page_login":
+							// $(document).attr('title','学生二维码登录');
+							// $("#navbar").show(500);
+							
+							break;
+						case "page_beginanswer":
+							// $(document).attr('title','开始答题');
+							// $("#navbar").hide(2000);
+							
+							break;
+						default:
 
-						break;
+							break;
+					}
+					$(document).attr('title',$("#navbar-nav>.active").text());
+
 				}
-				$(document).attr('title',$("#navbar-nav>.active").text());
+			});
 
-			}
-		});
-
+		}
+		fullpagebuild ();
 		var socket = io.connect();
 
 		socket.on('connecting', function(e) {
@@ -121,6 +129,41 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 	        });
 
 
+		socket.on('tm_data', function(tm_data) {
+	           	ctm_data=tm_data;
+
+	           	console.log(ctm_data);
+	           	var container=$("#tmlist_wraper");
+	           	container.children().remove();
+	           	ctm_data.forEach(function (item) {
+
+	           		var tmbox=$("<div>");
+	           		tmbox.addClass("slide");
+
+	           		var content=$("<h2>");
+	           		content.text(item.content);
+
+	           		var xxbox=$("<ol>");
+	           		item.answer.forEach(function (item) {
+	           			var xx=$("<li>");
+	           			xx.text(item.xx)
+	           			// xx.attr("is_right")
+	           			xxbox.append(xx);
+	           		});
+	           		tmbox.append(content).append(xxbox).appendTo(container);
+
+
+
+	           	});
+
+	           	$.fn.fullpage.destroy("all")
+	           	fullpagebuild ();
+	           	$('#loading_Modal').modal('hide');
+	           	$.fn.fullpage.moveTo("page_beginanswer");
+	           	
+
+	        });
+
 
 
 
@@ -131,7 +174,12 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 		});
 
 		$("#btn_beginanswer").click(function () {
-			$('#fullpage').fullpage.moveTo("page_beginanswer");
+
+			$("#tip_content").text("正在加载题目数据。。。");
+			$('#loading_Modal').modal('show');
+			// $('#fullpage').fullpage.moveTo("page_beginanswer");
+			socket.emit("get_tm_data","default");
+
 			//return false;
 		});
 
