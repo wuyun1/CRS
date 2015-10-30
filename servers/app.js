@@ -158,12 +158,13 @@ io.on('connection', function(socket) {
         
 
       socket.on('disconnect', function(e) {
-            if(students!=0){
+            if(students.length!=0){
                var index=students.indexOf(socket);
                students=students.slice(0,index).concat(students.slice(index+1,students.length));
+               teacher&&teacher.emit("xs_xx",index,socket.xs_name,socket.xs_num); 
+               console.log("学生下线！",index,socket.xs_name,socket.xs_num);
             }
-            teacher&&teacher.emit("xs_xx",index,socket.xs_name,socket.xs_num); 
-            console.log("学生下线！",index,socket.xs_name,socket.xs_num);
+            
         });
 
 
