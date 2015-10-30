@@ -53,10 +53,10 @@ body {
 */
 #ctl_panel{
     position: absolute;
-    bottom: 30px;
-    background: rgba(96, 95, 177, 0.85);
+    bottom: 15px;
+    background: rgba(85, 179, 101, 0.72);
 
-    box-shadow: 10px 10px 5px rgba(55, 56, 53, 0.79);
+    box-shadow: 10px 10px 5px rgba(197, 207, 179, 0.79);
     border-radius: 10px;
     transform: translate(-50%);
     left: 50%;
@@ -64,11 +64,12 @@ body {
     padding-top: 20px;
 
 
+    z-index: 999;
 }
 
 #tmlist_wraper .slide h2{
-    border: 1px solid #459C00;
-    background: rgb(0,0,0);
+    border: 10px solid rgba(203, 255, 48, 0.89);
+    background: rgb(31, 81, 64);
     padding: 80px 20px;
     margin: -120px 25px 64px 25px;
     color: #fff;
@@ -77,23 +78,38 @@ body {
 }
 
 #tmlist_wraper .slide ol{
-    border: 2px solid #2EC306;
-    border-radius: 5px;
-    background-color: #041790;
-    padding: 20px;
-    margin: 0px 35px 0px 35px;
-    box-shadow: 3px 3px 3px #130808;
+    border: 10px solid #B8EC32;
+    border-radius: 9px;
+    background-color: #1F5140;
+    padding: 11px;
+    margin: 20px 60px;
+    /* position: absolute; */
+    box-shadow: 10px 12px 3px rgba(121, 121, 121, 0.54);
+    /* bottom: 153px; */
+    /* width: 4%; */
 }
 
 #tmlist_wraper .slide ol li{
-   background: transparent;
-    width: 50%;
-    padding: 3px;
-    border: 1px solid gray;
-    padding: 2px;
-    color: red;
+   background: rgba(80, 142, 97, 0.65);
+    
+   /* width: 50%; */
+    
+   /* padding: 3px; */
+    
+   /* border: 1px solid gray; */
+    
+   padding: 9px;
+    
+   color: white;
     text-align: center;
     margin-left: 50%;
     transform: translate(-50%);
+   list-style-type: none;
+   font-size: 23px;
+   border-radius: 5px;
+}
+
+#tmlist_wraper .slide ol li+li {
+    margin-top: 5px;
 }
 

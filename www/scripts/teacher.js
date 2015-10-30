@@ -35,7 +35,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 			$('#fullpage').fullpage({
 				anchors: ['page_login', 'page_beginanswer'],
 				css3:true,
-				paddingTop:"50px",
+				paddingTop:"2px",
 				loopHorizontal:false,
 				// fixedElements:"#ctl_panel",
 				controlArrowColor:"rgba(0,0,0,0)",
@@ -47,12 +47,12 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 					switch(anchorLink){
 						case "page_login":
 							// $(document).attr('title','学生二维码登录');
-							// $("#navbar").show(500);
+							$("#navbar").show(0);
 							
 							break;
 						case "page_beginanswer":
 							// $(document).attr('title','开始答题');
-							// $("#navbar").hide(2000);
+							$("#navbar").hide(0);
 							
 							break;
 						default:
