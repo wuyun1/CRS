@@ -34,21 +34,25 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 			css3:true,
 			paddingTop:"50px",
 			scrollOverflow:true,
-			sectionsColor: ['#fff', 'gray', '#7BAABE', '#f90'],
+			// sectionsColor: ['#fff', 'gray', '#7BAABE', '#f90'],
 			afterLoad:function (anchorLink, index) {
 				$("#navbar-nav>.active").removeClass("active");
 				$("#navbar-nav>li>a[href=#"+anchorLink+"]").parent().addClass("active");
-				// switch(anchorLink){
-				// 	case "page_login":
-				// 		$(document).attr('title','学生二维码登录');
-				// 		break;
-				// 	case "page_beginanswer":
-				// 		$(document).attr('title','开始答题');
-				// 		break;
-				// 	default:
+				switch(anchorLink){
+					case "page_login":
+						// $(document).attr('title','学生二维码登录');
+						$("#navbar").show(500);
+						
+						break;
+					case "page_beginanswer":
+						// $(document).attr('title','开始答题');
+						$("#navbar").hide(2000);
+						
+						break;
+					default:
 
-				// 		break;
-				// }
+						break;
+				}
 				$(document).attr('title',$("#navbar-nav>.active").text());
 
 			}

@@ -25,9 +25,24 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 
 
 
-	$(function (argument) {
+	$(function () {
 
 
+		$('#fullpage').fullpage({
+			// anchors: ['page_login', 'page_beginanswer'],
+			css3:true,
+			// paddingTop:"50px",
+			// continuousVertical:true,
+			// loopHorizontal:true,
+			scrollOverflow:true,
+			// sectionsColor: ['#fff', '#fff', '#7BAABE', '#f90'],
+			afterLoad:function (anchorLink, index) {
+				
+
+			}
+		});
+
+		$('#fullpage').fullpage.setAllowScrolling(false);
 		// $("#form_login").submit(function (e) {
 		// 	console.log(e);
 		// 	return false;
@@ -111,6 +126,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 			xs_index=index;
 			console.log(xs_name,xs_num,xs_index);		
 			$(document).attr('title',"CRS课堂应答器"+"|"+name);
+			$('#fullpage').fullpage.moveTo(2);
 
 
 		});
