@@ -177,7 +177,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 							
 						},1000);
 				$("#cancel_login").click(function (e) {
-					$("#btn_login").text("登录");
+					$("#btn_login").button("reset");
 
 					clearInterval(tid);
 					$('#login_Modal').modal('show');

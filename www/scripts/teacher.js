@@ -8,6 +8,7 @@ require.config({
     },
     paths: {
         jquery: '/jquery/dist/jquery.min',
+        jscharts: '/scripts/jscharts',
         bootstrap:'/bootstrap/dist/js/bootstrap.min',
         fullpage:'/fullpage.js/jquery.fullPage',
         socketio:'/socket.io/socket.io',
@@ -17,7 +18,7 @@ require.config({
     }
 });
 
-require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'], function($,io) {
+require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','slimScroll'], function($,io) {
 
 
 
@@ -217,7 +218,55 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 				socket.emit("stop_yd",getCurtmid());
 				console.log(cur_yd_data);
 
-				$('#yd_result_content').text(JSON.stringify(cur_yd_data));
+				$('#yd_result_content').text("正在计算应答数据中。。。");
+
+
+
+
+				var xxdata= ctm_data[getCurtmid()].answer;
+
+				var data=cur_yd_data;
+
+				var myData=[];								//这是定义好的将会传给插件的数据，暂时上空数据
+
+				xxdata.forEach(function (item) {
+					item.yd=0;
+				})
+
+				data.forEach(function (item) {				//用选项数据 和应答数据填充
+					var i=item.xx_index;
+					xxdata[i].yd++;
+					// console.log(xxdata[i].yd);
+					// body...									//这里写转换代码
+				});
+
+				xxdata.forEach(function (item) {
+					myData.push([		item.xx,		item.yd	]);
+				});
+
+
+				// var myData = new Array(['是', 2], ['不是', 1], ['不确定', 3]);			要把数据封装成这这种格式
+				var myChart = new JSChart('yd_result_content', 'bar');
+				myChart.setDataArray(myData);
+				myChart.setBarColor('#42aBdB');
+				myChart.setBarOpacity(0.8);
+				myChart.setBarBorderColor('#D9EDF7');
+				myChart.setBarValues(false);
+				myChart.setTitleColor('#8C8383');
+				myChart.setAxisColor('#777E81');
+				myChart.setAxisValuesColor('#777E81');
+				myChart.draw();
+
+
+
+
+
+
+
+
+
+
+
 				$('#yd_result').modal('show');
 
 
@@ -236,7 +285,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 
 
 		$("#btn_beginanswer").click(function () {
-
+			$("#ctl_panel").show();
 			$("#tip_content").text("正在加载题目数据。。。");
 			$('#loading_Modal').modal('show');
 			// $('#fullpage').fullpage.moveTo("page_beginanswer");
