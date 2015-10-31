@@ -155,6 +155,36 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 
 		socket.on("require_login",function (argument) {
 			$('#login_Modal').modal('show');
+
+			var user_msg=JSON.parse(localStorage.crs_msg);
+			console.log(user_msg);
+			if(user_msg&&user_msg.name&&user_msg.num){
+				$("#user_name").val(user_msg.name);
+				$("#user_no").val(user_msg.num);
+				$('#btn_login').button('loading');
+
+				var time_end=3;
+				
+
+				var  tid=setInterval(function (argument) {
+							time_end--;
+							$("#btn_login").text(time_end+" 秒后自动登录");
+							if(time_end==0){
+								clearInterval(tid);
+								$("#btn_login").text("登录");
+								$("#btn_login").click();
+							}
+							
+						},1000);
+				$("#cancel_login").click(function (e) {
+					$("#btn_login").text("登录");
+
+					clearInterval(tid);
+					$('#login_Modal').modal('show');
+				});
+
+
+			}
 		});
 
 
@@ -167,6 +197,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 			xs_num=num;
 			xs_index=index;
 			cur_tmdatas=tm;
+			localStorage.crs_msg=JSON.stringify( {name:xs_name,num:xs_num});
 			$(document).attr('title',"CRS课堂应答器"+"|"+name);
 			$('#fullpage').fullpage.moveTo(2);
 
@@ -208,10 +239,8 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 			if($('#form_login').data('bootstrapValidator').isValid()){
 				
 				$('#btn_login').button('loading');
-				setTimeout(function () {
-					 socket.emit("xslogin",$("#user_name").val(),$("#user_no").val());
-				},2000);
-				
+				socket.emit("xslogin",$("#user_name").val(),$("#user_no").val());
+								
 
 
 			};

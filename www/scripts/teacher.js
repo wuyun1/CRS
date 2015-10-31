@@ -25,7 +25,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 
 		var ctm_data=null;
 		var start_dati=false;
-		var yd_data={};
+		var cur_yd_data=[];
 		var yd_count=0;
 		$('#loading_Modal').modal('show');
 
@@ -183,6 +183,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 		
 		socket.on('yd_data', function(num,xx_index) {
 	        yd_count++;
+	        cur_yd_data.push({num:num,xx_index:xx_index});
 	        var p=(yd_count/$("#logined_users_box").children().length)*100;
 	        console.log( p);
 	        $("#p_yd").css("width",p+"%");
@@ -202,15 +203,31 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 			$("#p_group").val($(this).text());
 		});
 
+		$("#btn_yd_next").click(function  () {
+			 if($("#btn_yd").text()=="下一题"){
+				$("#btn_yd").click();
+
+				// da_cur_ti ();
+			}
+		});
 
 		$("#btn_yd").click(function () {
 			var text=$(this).text();
 			if(text=="停止应答"){				
 				socket.emit("stop_yd",getCurtmid());
+				console.log(cur_yd_data);
+
+				$('#yd_result_content').text(JSON.stringify(cur_yd_data));
+				$('#yd_result').modal('show');
+
+
 				$("#btn_yd").text("下一题");
+
 			}else if(text=="下一题"){
 				$.fn.fullpage.moveSlideRight();
+				$('#yd_result').modal('hide');
 				$("#p_yd").css("width","0%");
+
 				// da_cur_ti ();
 			}
 		});
@@ -237,11 +254,12 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 		function da_cur_ti () {
 					if(start_dati) {
 						$("#p_tm").width(100*(getCurtmid()+1)/ ctm_data.length+"%");
+						cur_yd_data=[];
 						var time_end=3;
 						console.log(getCurtmid ());
 						$("#btn_yd").attr("disabled","disabled");
 						$("#btn_yd").text(time_end+" 秒后开始应答");
-						var  tid=setInterval(function function_name (argument) {
+						var  tid=setInterval(function(argument) {
 							time_end--;
 							$("#btn_yd").text(time_end+" 秒后开始应答");
 
