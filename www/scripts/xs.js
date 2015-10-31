@@ -203,6 +203,13 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 
 
 		});
+		
+		socket.on("tm_data",function (tm) {
+			
+			cur_tmdatas=tm;
+
+
+		});
 
 
 		socket.on("logout",function (index,name,num) {

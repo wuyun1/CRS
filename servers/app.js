@@ -30,7 +30,7 @@ var io = require('socket.io').listen(server);
 io.on('connection', function(socket) {
     //�ǳ�����
 
-
+    // socket.emit("loginFaild","已有教师端在线，教师端不能重复登录登录！");
 
 
 
@@ -44,6 +44,7 @@ io.on('connection', function(socket) {
 
        if(teacher!=null)
        {
+           
            console.log("教师端重复登录登录！");
            socket.emit("loginFaild","已有教师端在线，教师端不能重复登录登录！");
            return false;
@@ -64,7 +65,11 @@ io.on('connection', function(socket) {
 
       socket.on('get_tm_data', function(cate) {
             if(cate=="default"){
-               problemdb.filter(20,function(obj,key) {if(obj._key) return true;  else return false;  }, function (datas) {  cur_tmdatas=datas;  socket.emit('tm_data',datas);  });
+               problemdb.filter(20,function(obj,key) {if(obj._key) return true;  else return false;  }, function (datas) {  
+                 cur_tmdatas=datas;  
+                 socket.emit('tm_data',datas);  
+                 socket.broadcast.emit("tm_data",datas);
+               });
             }
         });
 
