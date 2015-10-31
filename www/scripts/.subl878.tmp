@@ -44,18 +44,12 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 				// sectionsColor: ['#fff', 'gray', '#7BAABE', '#f90'],
 				afterSlideLoad:function (anchorLink,	index,	slideIndex) {
 					// console.log(anchorLink,	index,	slideIndex);
-					if(getCurtmid()!=-1){
-						da_cur_ti();
-					}
 
 				},
 				afterLoad:function (anchorLink, index) {
 					$("#navbar-nav>.active").removeClass("active");
 					$("#navbar-nav>li>a[href=#"+anchorLink+"]").parent().addClass("active");
 					console.log(anchorLink);
-					if(getCurtmid()!=-1 && start_dati){
-						da_cur_ti();
-					}
 					switch(anchorLink){
 						case "page_login":
 							// $(document).attr('title','学生二维码登录');
@@ -173,7 +167,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 	           	$('#loading_Modal').modal('hide');
 	           	$.fn.fullpage.moveTo("page_beginanswer");
 	           	start_dati=true;
-	           	//da_cur_ti ();
+	           	da_cur_ti ();
 	           	
 
 	        });
@@ -193,12 +187,11 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 
 		$("#btn_yd").click(function () {
 			var text=$(this).text();
-			if(text=="停止应答"){				
-				socket.emit("stop_yd",getCurtmid());
+			if(text=="停止应答"){
 				$("#btn_yd").text("下一题");
 			}else if(text=="下一题"){
 				$.fn.fullpage.moveSlideRight();
-				// da_cur_ti ();
+				da_cur_ti ();
 			}
 		});
 
@@ -224,7 +217,6 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 		function da_cur_ti () {
 					if(start_dati) {
 						var time_end=3;
-						console.log(getCurtmid ());
 						$("#btn_yd").attr("disabled","disabled");
 						$("#btn_yd").text(time_end+" 秒后开始应答");
 						var  tid=setInterval(function function_name (argument) {
@@ -236,28 +228,13 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 								clearInterval(tid);
 								$("#btn_yd").text("停止应答");
 								$("#btn_yd").removeAttr("disabled");
-								socket.emit("start_yd",getCurtmid());
-
-
-
 							}
 							
 						},1000);
 					}
 		}
 
-		function getCurtmid () {
-			var r=/#page_beginanswer\/?(\d*)/.exec(location.hash);
-			if(r) {
-				if(r[1]!="") {
-					return +r[1];
-				}else{
-					return 0;
-				}
-			}else{
-				return -1;
-			}
-		}
+
 
 
 	});

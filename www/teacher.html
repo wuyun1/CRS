@@ -88,22 +88,43 @@
         <div data-anchor="page_beginanswer" class="container-fluid sec section">
             <div id="ctl_panel" class="container">
 
-    <div class="row clearfix">
-        <div class="col-xs-6 column">
-             <button type="button" class="btn btn-default btn-block btn-success">开始作答</button>
-        </div>
-        <div class="col-xs-6 column">
-             <button type="button" class="btn btn-default btn-block btn-warning">下一题</button>
-        </div>
-    </div>
-    <div class="row clearfix">
-        <div class="col-xs-12 column">
+    <div class="row ">
+        <div class="col-xs-12 ">
+             <button type="button" id="btn_yd" class="btn btn-default btn-block btn-success">停止作答</button>
             <br>
-            <div class="progress active progress-striped">
+        </div>
+        
+        
+
+        <div class="col-xs-1 ">
+              <span class="label label-success" role="label">应答进度:</span>
+        </div>
+        <div class="col-xs-11 ">
+            <div class="progress active progress-striped"><span class="sr-only">60%</span>
                 <div class="progress-bar progress-success " style="width: 60%;">
                 </div>
             </div>
         </div>
+
+
+
+
+    
+
+        <div class="col-xs-1 ">
+              <span class="label label-success" role="label">题目进度:</span>
+        </div>
+        <div class="col-xs-11 ">
+            <div class="progress active progress-striped"><span class="sr-only">60%</span>
+                <div class="progress-bar progress-success " style="width: 60%;">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        
     </div>
 
             </div>

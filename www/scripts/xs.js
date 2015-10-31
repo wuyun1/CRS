@@ -51,6 +51,8 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 		var xs_name=null;
 		var xs_num=null;
 		var xs_index=null;
+		var cur_tmdatas=null;
+		var cur_xx=null;
 
 		var tpl_warning=function  (title,content) {
 			// body...
@@ -110,13 +112,40 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 	           	console.log("test:",e);
 	        });
 
+		socket.on('start_yd', function(tm_index) {
+	           	var tm_xx=cur_tmdatas[tm_index].answer;
+	           	var wrap_xx_list=$("#list_xx");
+	           	wrap_xx_list.children().remove();
+	           	 // <button type="button" class="btn btn-primary btn-lg btn-block">（A）Large button</button>
+
+
+	           	tm_xx.forEach(function (item) {
+	           		var xx=$("<button>");
+	           		xx.attr("type","button").attr("class", "btn btn-primary btn-lg btn-block").attr("is_right",item.is_right).text(item.xx);
+	           		xx.click(function  (argument) {
+	           			cur_xx=$(this);
+	           		});
+	           		wrap_xx_list.append(xx);
+	           	});
+
+
+	        });
+
+		socket.on('stop_yd', function(e) {
+			$("#list_xx>button").attr("disabled","disabled");
+	           	$("#list_xx>button[is_right=true]").removeClass("btn-primary").addClass("btn-success");
+	           	if(cur_xx.attr("is_right")=="false"){
+	           		cur_xx.removeClass("btn-primary").addClass("btn-danger");
+	           	}
+	        });
+
 
 		socket.on("require_login",function (argument) {
 			$('#login_Modal').modal('show');
 		});
 
 
-		socket.on("loginSuccess",function (index,name,num) {
+		socket.on("loginSuccess",function (index,name,num,tm) {
 			$('#btn_login').button('reset');
 			$('#login_Modal').modal('hide');
 			$( '#login_tip' ).hide();
@@ -124,6 +153,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 			xs_name=name;
 			xs_num=num;
 			xs_index=index;
+			cur_tmdatas=tm;
 			console.log(xs_name,xs_num,xs_index);		
 			$(document).attr('title',"CRS课堂应答器"+"|"+name);
 			$('#fullpage').fullpage.moveTo(2);

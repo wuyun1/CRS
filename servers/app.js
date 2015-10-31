@@ -24,6 +24,7 @@ server.listen(port);
 var teacher=null;
 var users=[];
 var students=[];
+var cur_tmdatas=null;
 
 var io = require('socket.io').listen(server);
 io.on('connection', function(socket) {
@@ -44,7 +45,7 @@ io.on('connection', function(socket) {
        if(teacher!=null)
        {
            console.log("教师端重复登录登录！");
-           socket.emit("loginFaild","已有教师端在线！");
+           socket.emit("loginFaild","已有教师端在线，教师端不能重复登录登录！");
            return false;
        }
 
@@ -63,14 +64,22 @@ io.on('connection', function(socket) {
 
       socket.on('get_tm_data', function(cate) {
             if(cate=="default"){
-               problemdb.filter(20,function(obj,key) {if(obj._key) return true;  else return false;  }, function (datas) {   socket.emit('tm_data',datas);  });
+               problemdb.filter(20,function(obj,key) {if(obj._key) return true;  else return false;  }, function (datas) {  cur_tmdatas=datas;  socket.emit('tm_data',datas);  });
             }
         });
 
 
+      socket.on("start_yd",function (tm_index) {
+          if(cur_tmdatas){
+            socket.broadcast.emit("start_yd",tm_index);
+          }
+      });
 
-
-
+      socket.on("stop_yd",function (tm_index) {
+          if(cur_tmdatas){
+            socket.broadcast.emit("stop_yd",tm_index);
+          }
+      });
 
 
 
@@ -163,7 +172,7 @@ io.on('connection', function(socket) {
         if(teacher) {
             students.push(socket);
             var index=students.indexOf(socket);
-            socket.emit("loginSuccess",index,nickname,num);
+            socket.emit("loginSuccess",index,nickname,num,cur_tmdatas);
             teacher.emit("xs_dl",index,nickname,num);
             
             socket.xs_name=nickname;

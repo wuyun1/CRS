@@ -61,7 +61,7 @@ body {
     transform: translate(-50%);
     left: 50%;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 5px;
 
 
     z-index: 999;
@@ -71,7 +71,7 @@ body {
     border: 10px solid rgba(203, 255, 48, 0.89);
     background: rgb(31, 81, 64);
     padding: 80px 20px;
-    margin: -120px 25px 64px 25px;
+    margin: -120px 25px 16px 25px;
     color: #fff;
     box-shadow: 10px 10px 5px #888888;
     border-radius: 10px;
@@ -82,7 +82,7 @@ body {
     border-radius: 9px;
     background-color: #1F5140;
     padding: 11px;
-    margin: 20px 60px;
+    margin: 0px 60px;
     /* position: absolute; */
     box-shadow: 10px 12px 3px rgba(121, 121, 121, 0.54);
     /* bottom: 153px; */
