@@ -52,6 +52,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 		var xs_num=null;
 		var xs_index=null;
 		var cur_tmdatas=null;
+		var start_dati=false;
 		var cur_xx=null;
 
 		var tpl_warning=function  (title,content) {
@@ -119,24 +120,36 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 	           	 // <button type="button" class="btn btn-primary btn-lg btn-block">（A）Large button</button>
 
 
-	           	tm_xx.forEach(function (item) {
+	           	tm_xx.forEach(function (item,index) {
 	           		var xx=$("<button>");
-	           		xx.attr("type","button").attr("class", "btn btn-primary btn-lg btn-block").attr("is_right",item.is_right).text(item.xx);
+	           		xx.attr("type","button").attr("class", "btn btn-primary btn-lg btn-block").attr("is_right",item.is_right).text(item.xx).attr("xx_index",index);
 	           		xx.click(function  (argument) {
 	           			cur_xx=$(this);
+	           			socket.emit("yd_data",xs_num,cur_xx.attr("xx_index"));
+	           			$("#dt_tip").text("已提交应答数据！等待教师端显示应答结果。");
+	           			cur_xx.css("border","3px solid #0f0");
+	           			$("#list_xx>button").attr("disabled","disabled");
 	           		});
 	           		wrap_xx_list.append(xx);
 	           	});
-
+				$("body").css("background","#fff");
+				$("#dt_tip").text("请应选择答案！");
+				start_dati=true;
 
 	        });
 
 		socket.on('stop_yd', function(e) {
-			$("#list_xx>button").attr("disabled","disabled");
+			if(start_dati==false) return;
+				$("#list_xx>button").attr("disabled","disabled");
 	           	$("#list_xx>button[is_right=true]").removeClass("btn-primary").addClass("btn-success");
 	           	if(cur_xx.attr("is_right")=="false"){
 	           		cur_xx.removeClass("btn-primary").addClass("btn-danger");
-	           	}
+	           	}    
+	           	// $("#list_xx").children().remove();
+	           	// $("#list_xx").append('<div class="alert alert-info" role="alert">等待教师端开始应答。。。</div>');
+	     		$("body").css("background","#000");
+	     		$("#dt_tip").text("答案：（红色为答错，绿色为答对）");
+	     		start_dati=true;
 	        });
 
 
@@ -154,7 +167,6 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 			xs_num=num;
 			xs_index=index;
 			cur_tmdatas=tm;
-			console.log(xs_name,xs_num,xs_index);		
 			$(document).attr('title',"CRS课堂应答器"+"|"+name);
 			$('#fullpage').fullpage.moveTo(2);
 
@@ -195,7 +207,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 			$('#form_login').bootstrapValidator('validate');
 			if($('#form_login').data('bootstrapValidator').isValid()){
 				
-				$(btn_login).button('loading');
+				$('#btn_login').button('loading');
 				setTimeout(function () {
 					 socket.emit("xslogin",$("#user_name").val(),$("#user_no").val());
 				},2000);

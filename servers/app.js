@@ -177,6 +177,14 @@ io.on('connection', function(socket) {
             
             socket.xs_name=nickname;
             socket.xs_num=num;
+            
+            socket.on("yd_data",function(num,xx_index) {
+              teacher.emit("yd_data",num,xx_index);
+            });
+            
+            
+            
+            
         }else{
             socket.emit("loginFaild","教师端已经下线！");
         }

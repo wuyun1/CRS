@@ -82,3 +82,7 @@ ID_1446180527497content	"《三国演义》中的“凤雏”是谁？"
 ID_1446180527497answer	[{"xx":"A、张飞","is_right":false},{"xx":"B、庞统","is_right":true}]
 ID_1446180527497group	["default"]
 ID_1446180527497_key	"ID_1446180527497"
+ID_1446180349013_key	"ID_1446180349013"
+ID_1446180349013content	"【选择题】“一日不见，如隔三秋”里的“三秋”是指多长时间？"
+ID_1446180349013answer	[{"xx":"A、三年 ","is_right":true},{"xx":"B、三个季度","is_right":false}]
+ID_1446180349013group	["default"]

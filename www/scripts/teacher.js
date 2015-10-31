@@ -25,6 +25,8 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 
 		var ctm_data=null;
 		var start_dati=false;
+		var yd_data={};
+		var yd_count=0;
 		$('#loading_Modal').modal('show');
 
 		var students=[];
@@ -178,7 +180,17 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 
 	        });
 
-
+		
+		socket.on('yd_data', function(num,xx_index) {
+	        yd_count++;
+	        var p=(yd_count/$("#logined_users_box").children().length)*100;
+	        console.log( p);
+	        $("#p_yd").css("width",p+"%");
+	        if(p>=100){
+	        	$("#btn_yd").click();
+	        }
+	    });
+		
 		socket.on('loginFaild', function(e) {
 	           	alert("错误!\n"+e);
 	           	$("body").remove();
@@ -198,6 +210,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 				$("#btn_yd").text("下一题");
 			}else if(text=="下一题"){
 				$.fn.fullpage.moveSlideRight();
+				$("#p_yd").css("width","0%");
 				// da_cur_ti ();
 			}
 		});
@@ -223,6 +236,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 
 		function da_cur_ti () {
 					if(start_dati) {
+						$("#p_tm").width(100*(getCurtmid()+1)/ ctm_data.length+"%");
 						var time_end=3;
 						console.log(getCurtmid ());
 						$("#btn_yd").attr("disabled","disabled");
@@ -237,7 +251,7 @@ require(['jquery','socketio','bootstrap','fullpage','jquery_qrcode','slimScroll'
 								$("#btn_yd").text("停止应答");
 								$("#btn_yd").removeAttr("disabled");
 								socket.emit("start_yd",getCurtmid());
-
+								yd_count=0;
 
 
 							}
