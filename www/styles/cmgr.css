@@ -52,3 +52,28 @@ body {
 	border-radius: 5px;
 
 }
+
+
+
+
+.is_right{
+	opacity:0.01;
+	display:block;
+	width: 25px;
+	height: 25px;
+	background:yellow;
+}
+
+.is_right+span{
+	margin-top:-25px;
+	width: 25px;
+	height: 25px;
+	background:red;
+	display: block;
+	border-radius:5px;
+}
+
+.is_right:checked+span{
+
+	background:green;
+}

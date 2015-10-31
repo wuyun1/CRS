@@ -65,7 +65,7 @@ io.on('connection', function(socket) {
 
       socket.on('get_tm_data', function(cate) {
             if(cate=="default"){
-               problemdb.filter(20,function(obj,key) {if(obj._key) return true;  else return false;  }, function (datas) {  
+               problemdb.filter(100,function(obj,key) {if(obj._key) return true;  else return false;  }, function (datas) {  
                  cur_tmdatas=datas;  
                  socket.emit('tm_data',datas);  
                  socket.broadcast.emit("tm_data",datas);
@@ -146,7 +146,7 @@ io.on('connection', function(socket) {
       socket.on('get_all_pro',function  () {
         console.log("获取所有题目");
 
-        problemdb.filter(20,function(obj,key) {
+        problemdb.filter(100,function(obj,key) {
           if(obj._key) return true;
           else return false;
         }, function (datas) {

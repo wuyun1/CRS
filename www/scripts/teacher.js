@@ -255,7 +255,10 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 				myChart.setTitleColor('#8C8383');
 				myChart.setAxisColor('#777E81');
 				myChart.setAxisValuesColor('#777E81');
-				myChart.draw();
+				setTimeout(function() {
+					myChart.draw();
+				},30);
+				
 
 
 

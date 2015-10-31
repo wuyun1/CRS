@@ -32,7 +32,7 @@ require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io
 
 		var cur_editpro_key=null;
 
-		var tpl_an='                            <div class="input-group"> <span class="input-group-addon"> <input type="radio" aria-label="..." name="is_right" > </span> <input type="text" class="form-control" aria-label="..." placeholder="请输入答案选项"> <span class="input-group-addon del_an_hide"> <a href="#close" id="btn_del_an" class="remove label label-danger"><i class="glyphicon-remove glyphicon"></i>删除</a> </span> </div>';
+		var tpl_an='                            <div class="input-group"> <span class="input-group-addon"> <input type="radio" class="is_right" aria-label="..." name="is_right" ><span></span> </span> <input type="text" class="form-control" aria-label="..." placeholder="请输入答案选项"> <span class="input-group-addon del_an_hide"> <a href="#close" id="btn_del_an" class="remove label label-danger"><i class="glyphicon-remove glyphicon"></i>删除</a> </span> </div>';
 		var tpl_remove_btn='<a id="btn_del_an" class="remove label label-danger del_an_hide"><i class="glyphicon-remove glyphicon"></i>删除</a>';
 
 		$('#loading_Modal').modal('show');
@@ -66,8 +66,8 @@ require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io
 
 			}
 		});
-
-
+		$.fn.fullpage.setAllowScrolling(false);
+	
 
 		$("ul[aria-labelledby=dropdownMenu2]>li").click(function () {
 			console.log($(this).text());
@@ -176,6 +176,24 @@ require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io
 			};
 
 			console.log(problem);
+			
+			if(problem.content==""){
+				alert("题目描述不能为空");
+				return;
+			}
+			
+			var sf_tui=false;
+			problem.answer.forEach(function(item) {
+				if(item.xx=="")
+					sf_tui=true;
+			});
+			
+			
+			
+			if(sf_tui){
+				alert("题目选项不能有空");
+				return;
+			}
 
 			if(!confirm(	"确定"+$("#btn_save").text()+"!")){
 				return false;
@@ -204,7 +222,7 @@ require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io
 	            		socket.emit('manger_login');
 
 				socket.emit('get_all_pro');
-				$('#loading_Modal').modal('hide');
+				
 
 	            },1000);
 	            	
@@ -262,6 +280,7 @@ require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io
 				
 				socket.emit('get_all_pro');
 			});
+			$('#loading_Modal').modal('hide');
 
 		});
 
