@@ -204,13 +204,7 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 			$("#p_group").val($(this).text());
 		});
 
-		$("#btn_yd_next").click(function  () {
-			 if($("#btn_yd").text()=="下一题"){
-				$("#btn_yd").click();
-
-				// da_cur_ti ();
-			}
-		});
+	
 
 		$("#btn_yd").click(function () {
 			var text=$(this).text();
@@ -274,6 +268,72 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 
 
 				$("#btn_yd").text("下一题");
+				
+				
+				
+				var time_end=3;
+				
+				$("#btn_yd_next").text(time_end+" 秒后开始下一题，点击取消自动");
+				var  tid=setInterval(function(argument) {
+					time_end--;
+					$("#btn_yd_next").text(time_end+" 秒后开始下一题，点击取消自动");
+					
+					
+					
+
+					if(time_end==0){
+						clearInterval(tid);
+						$("#btn_yd_next").text("下一题");
+						//$("#btn_yd").removeAttr("disabled");
+						//socket.emit("start_yd",getCurtmid());
+						
+							 if($("#btn_yd").text()=="下一题")
+								$("#btn_yd").click();
+				
+								// da_cur_ti ();
+					
+					}
+
+
+					
+					
+				},1000);
+				
+				$("#btn_yd_next").unbind( "click" );
+				$("#btn_yd_next").click(function  () {
+					clearInterval(tid);
+					$("#btn_yd_next").unbind( "click" );
+					$("#btn_yd_next").text("下一题");
+					$("#btn_yd_next").click(function  () {
+						
+						
+						if($("#btn_yd").text()=="下一题")
+								$("#btn_yd").click();
+						
+						
+						
+						
+					});
+					
+					
+					
+				});
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 
 			}else if(text=="下一题"){
 				$.fn.fullpage.moveSlideRight();
