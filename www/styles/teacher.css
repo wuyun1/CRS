@@ -34,7 +34,7 @@ body {
     background: orange;
     border-radius: 5px;*/
     width: 80%;
-    position: absolute;
+    position: relative;
     left: 50%;
     -webkit-transform:translate(-50%);
 
