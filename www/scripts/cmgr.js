@@ -76,10 +76,10 @@ require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io
 
 		$("#tm_list").click(function (e) {
 			var target=e.target;
-			if(target.tagName.toUpperCase()!="LI"){
+			console.log(target);
+			if(target.tagName.toUpperCase()!="A"){
 				return false;
 			}
-
 			
 			var cur_pro_index=$(target).attr("data_index"),
 				cp=cur_pro_data[cur_pro_index];
@@ -261,15 +261,15 @@ require(['jquery','socketio','bootstrap','fullpage','slimScroll'], function($,io
 			console.log(data);
 			cur_pro_data=data;
 			cur_pro_data.forEach(function (item,index) {
-				var item_tm = $("<li>"+item.content+"</li>");
+				var item_tm = $("<a>"+item.content+"</a>");
 				item_tm.attr("id",item._key);
 				item_tm.attr("data_index",index);
 				$(tpl_remove_btn).appendTo(item_tm);
-				item_tm.appendTo(		$("#tm_list")	);
+				item_tm.appendTo(		$("<li>").appendTo($("#tm_list"))	);
 
 			});
 
-			$("#tm_list>li>.remove").click(function () {
+			$("#tm_list>li>a>.remove").click(function () {
 				console.log($(this).parent().attr("id"));
 
 				if(!confirm(	"确定删除!")){

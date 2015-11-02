@@ -100,10 +100,10 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 					students.push({name:name,num:num,serverindex:index});
 					var xs_len=students.length;
 					$("#xs_len").text(xs_len);
-					var newli=$("<li></li>");
+					var newli=$("<a></a>");
 					newli.text(name);
 					newli.attr("id","xsli_"+num);
-					$("#logined_users_box").append(	newli	);
+					$("#logined_users_box").append(	          $("<li>").append(newli)	);
 				});
 
 				socket.on("xs_xx",function (index,name,num) {
@@ -152,8 +152,10 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 	           	container.children().remove();
 	           	ctm_data.forEach(function (item) {
 
+	           		var slide=$("<div>");
+	           		slide.addClass("slide");
 	           		var tmbox=$("<div>");
-	           		tmbox.addClass("slide");
+	           		tmbox.addClass("tmbox");
 
 	           		var content=$("<h2>");
 	           		content.text(item.content);
@@ -165,7 +167,9 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 	           			// xx.attr("is_right")
 	           			xxbox.append(xx);
 	           		});
-	           		tmbox.append(content).append(xxbox).appendTo(container);
+
+	           		tmbox.append(content).append(xxbox);
+	           		slide.append(tmbox).appendTo(container);
 
 
 
@@ -240,29 +244,34 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 
 
 				// var myData = new Array(['是', 2], ['不是', 1], ['不确定', 3]);			要把数据封装成这这种格式
+				var colors = ['#AF0202', '#EC7A00', '#FCD200', '#81C714','#AF0202', '#EC7A00', '#FCD200', '#81C714'].slice(0,xxdata.length);
 				var myChart = new JSChart('yd_result_content', 'bar');
 				myChart.setDataArray(myData);
-				myChart.setBarColor('#42aBdB');
-				myChart.setBarOpacity(0.8);
-				myChart.setBarBorderColor('#D9EDF7');
-				myChart.setBarValues(false);
-				myChart.setTitleColor('#8C8383');
-				myChart.setAxisColor('#777E81');
-				myChart.setAxisValuesColor('#777E81');
+				myChart.colorizeBars(colors);
+				myChart.setTitle('选项结果矩形图');
+				myChart.setTitleColor('#8E8E8E');
+				myChart.setAxisNameX('');
+				myChart.setAxisNameY('%');
+				myChart.setAxisColor('#C4C4C4');
+				myChart.setAxisNameFontSize(16);
+				myChart.setAxisNameColor('#999');
+				myChart.setAxisValuesColor('#7E7E7E');
+				myChart.setBarValuesColor('#7E7E7E');
+				myChart.setAxisPaddingTop(60);
+				myChart.setAxisPaddingRight(140);
+				myChart.setAxisPaddingLeft(150);
+				myChart.setAxisPaddingBottom(40);
+				myChart.setTextPaddingLeft(105);
+				myChart.setTitleFontSize(11);
+				myChart.setBarBorderWidth(1);
+				myChart.setBarBorderColor('#C4C4C4');
+				myChart.setBarSpacingRatio(50);
+				myChart.setGrid(false);
+				myChart.setSize(580, 321);
+				myChart.setBackgroundImage('/images/chart_bg.jpg');
 				setTimeout(function() {
 					myChart.draw();
 				},30);
-				
-
-
-
-
-
-
-
-
-
-
 
 				$('#yd_result').modal('show');
 
@@ -293,9 +302,7 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 								// da_cur_ti ();
 					
 					}
-
-
-					
+	
 					
 				},1000);
 				
@@ -318,22 +325,6 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 					
 					
 				});
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 
 			}else if(text=="下一题"){
 				$.fn.fullpage.moveSlideRight();
@@ -367,7 +358,7 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 					if(start_dati) {
 						$("#p_tm").width(100*(getCurtmid()+1)/ ctm_data.length+"%");
 						cur_yd_data=[];
-						var time_end=3;
+						var time_end=1;
 						console.log(getCurtmid ());
 						$("#btn_yd").attr("disabled","disabled");
 						$("#btn_yd").text(time_end+" 秒后开始应答");

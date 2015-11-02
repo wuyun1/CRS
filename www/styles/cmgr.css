@@ -15,7 +15,7 @@ body {
 }
 
 .del_an_hide{
-	display: none;
+	display: none!important;
 	padding: 0;
 }
 
@@ -26,7 +26,7 @@ body {
 
 #tm_list>li:hover .del_an_hide{
 	position: absolute;
-	display:block;
+	display:block!important;
 	width:auto;
 	padding: 5px;
 	right: 5px;
@@ -37,19 +37,25 @@ body {
 	border: 1px solid gray;
 	/*padding: 2px;*/
 	max-height: 500px;
-	list-style-type: decimal;
+	list-style-type: none;
 	overflow-y: scroll;
+	position: relative;
 }
 
 #tm_list>li{
-	position: relative;
+/*	position: relative;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	height: 30px;
 	line-height: 30px;
 	text-align: center;
 	background: orange;
-	border-radius: 5px;
+	border-radius: 5px;*/
+
+	    width: 80%;
+    position: relative;
+    left: 50%;
+    -webkit-transform:translate(-50%);
 
 }
 
