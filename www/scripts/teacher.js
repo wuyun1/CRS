@@ -280,7 +280,7 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 				
 				
 				
-				var time_end=3;
+				var time_end=2;
 				
 				$("#btn_yd_next").text(time_end+" 秒后开始下一题，点击取消自动");
 				var  tid=setInterval(function(argument) {
@@ -358,16 +358,16 @@ require(['jquery','socketio','jscharts','bootstrap','fullpage','jquery_qrcode','
 					if(start_dati) {
 						$("#p_tm").width(100*(getCurtmid()+1)/ ctm_data.length+"%");
 						cur_yd_data=[];
-						var time_end=1;
+						var time_end=0;
 						console.log(getCurtmid ());
 						$("#btn_yd").attr("disabled","disabled");
 						$("#btn_yd").text(time_end+" 秒后开始应答");
 						var  tid=setInterval(function(argument) {
-							time_end--;
+							
 							$("#btn_yd").text(time_end+" 秒后开始应答");
+							time_end--;
 
-
-							if(time_end==0){
+							if(time_end<=0){
 								clearInterval(tid);
 								$("#btn_yd").text("停止应答");
 								$("#btn_yd").removeAttr("disabled");
