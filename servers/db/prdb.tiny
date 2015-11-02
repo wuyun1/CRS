@@ -146,3 +146,43 @@ ID_1446363514578_key	"\u0000"
 ID_1446363514578content	"\u0000"
 ID_1446363514578answer	"\u0000"
 ID_1446363514578group	"\u0000"
+ID_1446179942445_key	"ID_1446179942445"
+ID_1446179942445content	"【选择题】“冲天香阵透长安，满地尽带黄金甲”描述的是什么花？"
+ID_1446179942445answer	[{"xx":"A、梅花","is_right":false},{"xx":"B、菊花","is_right":false},{"xx":"自己做","is_right":true}]
+ID_1446179942445group	["default"]
+ID_1446180005138_key	"ID_1446180005138"
+ID_1446180005138content	"【选择题】“但愿人长久，千里共婵娟”，苏东坡借这首词表达了对谁的思念之情？"
+ID_1446180005138answer	[{"xx":"A.妻子","is_right":true},{"xx":"B.兄弟","is_right":false},{"xx":"A.妻子","is_right":false}]
+ID_1446180005138group	["default"]
+ID_1446180054828_key	"ID_1446180054828"
+ID_1446180054828content	"【选择题】“金戈铁马，气吞万里如虎“是谁的词句？"
+ID_1446180054828answer	[{"xx":"辛弃疾","is_right":false},{"xx":"岳飞","is_right":true},{"xx":"····","is_right":false}]
+ID_1446180054828group	["default"]
+ID_1446180121481_key	"ID_1446180121481"
+ID_1446180121481content	"【选择题】“阡陌”的“陌”是田间什么方向的小路？"
+ID_1446180121481answer	[{"xx":"东西方向 ","is_right":false},{"xx":"南北方向","is_right":true}]
+ID_1446180121481group	["default"]
+ID_1446180150526_key	"ID_1446180150526"
+ID_1446180150526content	"【选择题】“人为刀俎我为鱼肉”中，“俎”指的是什么？"
+ID_1446180150526answer	[{"xx":"砧板 ","is_right":false},{"xx":"斧头","is_right":true}]
+ID_1446180150526group	["default"]
+ID_1446180176589_key	"ID_1446180176589"
+ID_1446180176589content	"【选择题】“生当做人杰，死亦为鬼雄，至今思项羽，不肯过江东。”为哪位诗人的作品？"
+ID_1446180176589answer	[{"xx":"李清照","is_right":false},{"xx":"李白","is_right":true}]
+ID_1446180176589group	["default"]
+ID_1446180198377_key	"ID_1446180198377"
+ID_1446180198377content	"【选择题】“司空见惯”的“司空”是指什么？"
+ID_1446180198377answer	[{"xx":"唐代的一位诗人","is_right":false},{"xx":"一种官职","is_right":true}]
+ID_1446180198377group	["default"]
+ID_1446180226022_key	"ID_1446180226022"
+ID_1446180226022content	"【选择题】“桃李满天下”中的“桃李“指的是什么？"
+ID_1446180226022answer	[{"xx":"朋友","is_right":false},{"xx":"学生","is_right":true}]
+ID_1446180226022group	["default"]
+ID_1446180246701_key	"ID_1446180246701"
+ID_1446180246701content	"【选择题】“吾日三省吾身” 是出自谁的名句？"
+ID_1446180246701answer	[{"xx":"孔子","is_right":false},{"xx":"曾子","is_right":true}]
+ID_1446180246701group	["default"]
+ID_1446180297017_key	"ID_1446180297017"
+ID_1446180297017content	"【选择题】“下半旗致哀”的由来是源于什么人物的去世？"
+ID_1446180297017answer	[{"xx":"族长","is_right":false},{"xx":"船长","is_right":true}]
+ID_1446180297017group	["default"]

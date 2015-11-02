@@ -132,7 +132,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 	           		});
 	           		wrap_xx_list.append(xx);
 	           	});
-				$("body").css("background","#fff");
+				// $("body").css("background","#fff");
 				$("#dt_tip").text("请应选择答案！");
 				start_dati=true;
 
@@ -147,7 +147,7 @@ require(['jquery','socketio','bootstrap','fullpage','bootstrapValidator','slimSc
 	           	}    
 	           	// $("#list_xx").children().remove();
 	           	// $("#list_xx").append('<div class="alert alert-info" role="alert">等待教师端开始应答。。。</div>');
-	     		$("body").css("background","#000");
+	     		// $("body").css("background","#000");
 	     		$("#dt_tip").text("答案：（红色为答错，绿色为答对）");
 	     		start_dati=true;
 	        });
