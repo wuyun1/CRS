@@ -20,7 +20,7 @@ body {
 }
 
 #answer_container div:hover .del_an_hide{
-	display:table-cell;
+	display:table-cell!important;
 }
 
 
@@ -52,9 +52,12 @@ body {
 	background: orange;
 	border-radius: 5px;*/
 
-	    width: 80%;
+
+    width: 80%;
     position: relative;
     left: 50%;
+    transform:translate(-50%);
+
     -webkit-transform:translate(-50%);
 
 }

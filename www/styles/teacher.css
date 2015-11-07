@@ -38,6 +38,9 @@ body {
     left: 50%;
     -webkit-transform:translate(-50%);
 
+    transform:translate(-50%);
+
+
 }
 
 #title_h1 {
