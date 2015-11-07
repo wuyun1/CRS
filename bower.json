@@ -1,0 +1,39 @@
+{
+  "name": "CRS",
+  "description": "Classroom response system",
+  "main": "./servers/app.js",
+  "authors": [
+    "wuyun1 <842269153@qq.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "CRS",
+    "Classroom",
+    "response",
+    "system"
+  ],
+  "homepage": "https://github.com/wuyun1/CRS",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fullpage.js": "~2.7.4",
+    "jquery-qrcode": "*",
+    "bootstrap":"*",
+    "bootstrapvalidator":"*",
+    "fullpage.js":"*",
+    "jquery":"~2.1.4",
+    "requirejs":"*",
+    "slimScroll":"~1.3.6"
+
+  },
+  "version": "0.0.0",
+  "private": true
+}
